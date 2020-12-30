@@ -5,10 +5,11 @@ board = [' ' for x in range(10)]
 def insertLetter(letter, pos):
     board[pos] = letter
 
+#Checking Free space in board
 def spaceIsFree(pos):
     return board[pos] == ' '
 
-
+#Board's Structure
 def printBoard(board):
     print('   |   |')
     print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
@@ -22,7 +23,7 @@ def printBoard(board):
     print(' ' + board[7] + ' | ' + board[8] + ' | ' + board[9])
     print('   |   |')
 
-
+#Winning Possiblities
 def isWinner(bo, le):
     return (bo[7] == le and bo[8] == le and bo[9] == le) or (bo[4] == le and bo[5] == le and bo[6] == le) or (
                 bo[1] == le and bo[2] == le and bo[3] == le) or (bo[1] == le and bo[4] == le and bo[7] == le) or (
@@ -30,7 +31,7 @@ def isWinner(bo, le):
                        bo[3] == le and bo[6] == le and bo[9] == le) or (
                        bo[1] == le and bo[5] == le and bo[9] == le) or (bo[3] == le and bo[5] == le and bo[7] == le)
 
-
+#Player's Move
 def playerMove():
     run = True
     while run:
@@ -48,7 +49,7 @@ def playerMove():
         except:
             print('Please type a number!')
 
-
+#Computer's Move
 def compMove():
     possibleMoves = [x for x, letter in enumerate(board) if letter == ' ' and x != 0]
     move = 0
@@ -84,21 +85,21 @@ def compMove():
 
     return move
 
-
+#Selecting random move for computer
 def selectRandom(li):
     import random
     ln = len(li)
     r = random.randrange(0, ln)
     return li[r]
 
-
+#Checking board's space whether it is full or not
 def isBoardFull(board):
     if board.count(' ') > 1:
         return False
     else:
         return True
 
-
+#Main Program starts here
 def main():
     print('Welcome to Tic Tac Toe!')
     printBoard(board)
@@ -126,7 +127,7 @@ def main():
     if isBoardFull(board):
         print('Tie Game!')
 
-
+#Play again or Quit
 while True:
     answer = input('Do you want to play again? (Y/N)')
     if answer.lower() == 'y' or answer.lower == 'yes':
